@@ -11,3 +11,5 @@ When having refreshed the resources of your ants you click on the respective but
 
 The prog is only updating status on startup.
 When the date is changing (00:00:00) it will not be counted - therefore the prog isnt working on pcs which runs 24/7.
+
+Method "DateChanged();" not working.
