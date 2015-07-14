@@ -13,19 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
-//using System.Data.SqlClient;
-//test
+
+
 
 namespace Time_V_5
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// 
-
-     
-
-
     public partial class MainWindow : Window
     {
 
@@ -46,17 +38,12 @@ namespace Time_V_5
         public MainWindow()
         {
             InitializeComponent();
-
-
             LoadSettingsMethod();
-
-
             wDaysGone();
             zDaysGone();
             pDaysGone();
-
             Warning();
-            //Datechanged();
+            
             
 
             
