@@ -53,24 +53,51 @@ namespace Time_V_5
 
         public void Datechanged()
         {
-        while (true)
+            //Time when update method will be called 
+            var DailyTime = "00:01:00";
+            var timeParts = DailyTime.Split(new char[1] { ':' });
+
+            //DEBUG: SHOW UPDATE TIME
+            //System.Windows.Forms.MessageBox.Show(DailyTime.ToString());
+            //DEBUG
+
+            var dateNow = DateTime.Now;
+            var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
+                        int.Parse(timeParts[0]), int.Parse(timeParts[1]), int.Parse(timeParts[2]));
+            TimeSpan ts;
+
+
+            if (date > dateNow)
+                ts = date - dateNow;
+
+            else
             {
-
-                String CurrentDate;
-
-                CurrentDate = DateTime.Now.ToString();
-
-                if (CurrentDate.Contains("00:00:00 AM")) //"00:00:00"
-                {
-                    wDaysGone();
-                    zDaysGone();
-                    pDaysGone();
-
-                    Warning();
-                }
-
+                date = date.AddDays(1);
+                ts = date - dateNow;
             }
+
+            //DEBUG: SHOW REMAINING TIME UNTIL UPDATE FROM NOW
+            //System.Windows.Forms.MessageBox.Show(ts.ToString());
+            //DEBUG
+
+
+            //waits certan time and run the code     
+            Task.Delay(ts).ContinueWith((x) => Datechanged2());
+
         }
+
+
+        public void Datechanged2()
+        {
+            //DEBUG: SHOW MSG IF METHOD CALL WORKING 
+            //System.Windows.Forms.MessageBox.Show("geht");
+            LoadSettingsMethod();
+            wDaysGone();
+            zDaysGone();
+            pDaysGone();
+            Warning();
+        }
+
 
 
         public void LoadSettingsMethod()
@@ -183,35 +210,39 @@ namespace Time_V_5
 
         public void Warning()
         {
-            if (wDaysPassed == 1)
+            //Warnungs IMGs langsam einblenden
+            if (wDaysPassed == 1 || zDaysPassed == 1 || pDaysPassed == 1)
             {
                 warnimg.Opacity = 0.1;
                 deathimg.Opacity = 0.1;
             }
 
-            else if (wDaysPassed == 2)
+            else if (wDaysPassed == 2 || zDaysPassed == 2 || pDaysPassed == 2)
             {
                 warnimg.Opacity = 0.2;
                 deathimg.Opacity = 0.2;
             }
 
-            else if (wDaysPassed == 3)
+            else if (wDaysPassed == 3 || zDaysPassed == 3 || pDaysPassed == 3)
             {
                 warnimg.Opacity = 0.3;
                 deathimg.Opacity = 0.3;
             }
 
-            //Warnungsfeld anzeigen
-            if (wDaysPassed > 3 && wDaysPassed <= 6)
+            //Warnungs IMGs anzeigen
+            if (wDaysPassed > 3 && wDaysPassed <= 6 || zDaysPassed > 3 && zDaysPassed <= 6 || pDaysPassed > 3 && pDaysPassed <= 6)
             {
                 warnimg.Visibility = Visibility.Visible;
             }
-            else if (wDaysPassed > 6)
+
+            else if (wDaysPassed > 6 || zDaysPassed > 6 || pDaysPassed > 6)
             {
                 warnimg.Visibility = Visibility.Visible;
                 deathimg.Visibility = Visibility.Visible;
             }
         }
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

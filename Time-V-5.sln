@@ -5,6 +5,15 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Time-V-5", "Time-V-5\Time-V-5.csproj", "{DBAB5CD0-7A63-4406-B5DB-295E3BA74BDC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B86B7004-A870-4E32-901C-59C1DEE59F7E}"
+	ProjectSection(SolutionItems) = preProject
+		Time-V-5\Res\2940-ants.ico = Time-V-5\Res\2940-ants.ico
+		Time-V-5\Res\2940-ants.jpg = Time-V-5\Res\2940-ants.jpg
+		Time-V-5\Res\death.png = Time-V-5\Res\death.png
+		Time-V-5\Res\Icons8-Windows-8-Animals-Ant.ico = Time-V-5\Res\Icons8-Windows-8-Animals-Ant.ico
+		Time-V-5\Res\warn.png = Time-V-5\Res\warn.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

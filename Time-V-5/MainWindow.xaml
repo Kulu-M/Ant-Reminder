@@ -1,7 +1,11 @@
 ﻿<Window x:Class="Time_V_5.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="216" Width="467">
+        Title="MainWindow" Height="216" Width="467"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        >
+
+    
     <Grid Margin="0,0,2,5">
         <ProgressBar x:Name="wBar" HorizontalAlignment="Left" Height="20" Margin="60,10,0,0" VerticalAlignment="Top" Width="130"/>
         <ProgressBar x:Name="zBar" HorizontalAlignment="Left" Height="20" Margin="60,45,0,0" VerticalAlignment="Top" Width="130"/>
@@ -13,15 +17,14 @@
         <Label x:Name="wDaysGoneField" Content="Label" HorizontalAlignment="Left" Margin="204,7,0,0" VerticalAlignment="Top"/>
         <Label x:Name="zDaysGoneField" Content="Label" HorizontalAlignment="Left" Margin="204,42,0,0" VerticalAlignment="Top"/>
         <Label x:Name="pDaysGoneField" Content="Label" HorizontalAlignment="Left" Margin="204,77,0,0" VerticalAlignment="Top"/>
-        <Image x:Name="warnimg" Visibility="Visible"
-Source="D:\DROPBOX FOLDER\Dropbox\CodingDojo\Visual Studio 2013\Projects\Time-V-5\Time-V-5\Res\warn.png" Margin="123,93,267,-13"/>
-        <Image x:Name="deathimg" Visibility="Visible"
-Source="D:\DROPBOX FOLDER\Dropbox\CodingDojo\Visual Studio 2013\Projects\Time-V-5\Time-V-5\Res\death.png" Margin="257,93,135,-13"/>
+        <Image x:Name="warnimg" Visibility="Visible" Source="pack://siteoforigin:,,,/Res/warn.png" Margin="76,89,313.8,-9.6" />
+        <Image x:Name="deathimg" Visibility="Visible" Source="pack://siteoforigin:,,,/Res/death.png" Margin="252,110,48.8,10.4"
+               />
         <Button Content="Refreshed" HorizontalAlignment="Left" Margin="351,80,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
         <Button Content="Refreshed" HorizontalAlignment="Left" Margin="351,45,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
 
-
+        
 
     </Grid>
 </Window>
