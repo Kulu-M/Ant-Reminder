@@ -16,6 +16,7 @@ using System.Timers;
 
 
 
+
 namespace Time_V_5
 {
     public partial class MainWindow : Window
@@ -43,11 +44,7 @@ namespace Time_V_5
             zDaysGone();
             pDaysGone();
             Warning();
-            //Datechanged();
-            
-
-            
-           
+            //Datechanged(); 
         }
 
 
@@ -252,6 +249,9 @@ namespace Time_V_5
             Properties.Settings.Default.wDateSaverSetting = thisDay;
             Properties.Settings.Default.Save();
 
+            //Check Warnings
+            Warning();
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -262,6 +262,8 @@ namespace Time_V_5
             Properties.Settings.Default.zDateSaverSetting = thisDay;
             Properties.Settings.Default.Save();
 
+            //Check Warnings
+            Warning();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -272,6 +274,8 @@ namespace Time_V_5
             Properties.Settings.Default.pDateSaverSetting = thisDay;
             Properties.Settings.Default.Save();
 
+            //Check Warnings
+            Warning();
         }
     }
 
