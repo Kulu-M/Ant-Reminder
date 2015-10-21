@@ -9,11 +9,11 @@ Reminds you of the Date when to feed ants (counted in days). There are three fie
 When having refreshed the resources of your ants you click on the respective buttons. The date is saved and you are reminded in three days.
 
 
-![alt text](https://github.com/Kulu-M/DateReminder/Screens/capture3.PNG "Logo Title Text 1")
+![alt text](https://github.com/Kulu-M/DateReminder/tree/master/Screens/capture3.PNG "Logo Title Text 1")
 ---
-![alt text](https://github.com/Kulu-M/DateReminder/Screens/capture1.PNG "Logo Title Text 2")
+![alt text](https://github.com/Kulu-M/DateReminder/tree/master/Screens/capture1.PNG "Logo Title Text 2")
 ---
-![alt text](https://github.com/Kulu-M/DateReminder/Screens/capture2.PNG "Logo Title Text 3")
+![alt text](https://github.com/Kulu-M/DateReminder/tree/master/Screens/capture2.PNG "Logo Title Text 3")
 
 
 
@@ -28,5 +28,5 @@ When having refreshed the resources of your ants you click on the respective but
 
 2. Additional features which could be implemented:
 
-Option menu
-Send E-Mail
+- Option menu
+- Send E-Mail
