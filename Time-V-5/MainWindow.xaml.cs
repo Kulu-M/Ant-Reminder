@@ -13,109 +13,56 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Timers;
-
-
-
+using System.Windows.Threading;
 
 namespace Time_V_5
 {
     public partial class MainWindow : Window
     {
-
         //VAR DEC
-        DateTime thisDay = DateTime.Today;
-        
-
-        DateTime wSavedDate;
-        DateTime zSavedDate;
-        DateTime pSavedDate;
-
+        DateTime today;
 
         int wDaysPassed;
         int zDaysPassed;
         int pDaysPassed;
 
+        DispatcherTimer timer = new DispatcherTimer();
 
         public MainWindow()
         {
             InitializeComponent();
-            LoadSettingsMethod();
-            wDaysGone();
-            zDaysGone();
-            pDaysGone();
-            Warning();
-            //Datechanged(); 
         }
 
-
-        public void Datechanged()
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            //Time when update method will be called 
-            var DailyTime = "00:01:00";
-            var timeParts = DailyTime.Split(new char[1] { ':' });
+            today = DateTime.Today.Date;
 
-            //DEBUG: SHOW UPDATE TIME
-            //System.Windows.Forms.MessageBox.Show(DailyTime.ToString());
-            //DEBUG
+            timer.Interval = TimeSpan.FromMinutes(50);
+            timer.Tick += timerTick;
 
-            var dateNow = DateTime.Now;
-            var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day,
-                        int.Parse(timeParts[0]), int.Parse(timeParts[1]), int.Parse(timeParts[2]));
-            TimeSpan ts;
-
-
-            if (date > dateNow)
-                ts = date - dateNow;
-
-            else
-            {
-                date = date.AddDays(1);
-                ts = date - dateNow;
-            }
-
-            //DEBUG: SHOW REMAINING TIME UNTIL UPDATE FROM NOW
-            //System.Windows.Forms.MessageBox.Show(ts.ToString());
-            //DEBUG
-
-
-            //waits certan time and run the code     
-            Task.Delay(ts).ContinueWith((x) => Datechanged2());
-
-        }
-
-
-        public void Datechanged2()
-        {
-            //DEBUG: SHOW MSG IF METHOD CALL WORKING 
-            //System.Windows.Forms.MessageBox.Show("geht");
-            LoadSettingsMethod();
             wDaysGone();
             zDaysGone();
             pDaysGone();
             Warning();
         }
 
-
-
-        public void LoadSettingsMethod()
+        private void timerTick(object sender, EventArgs e)
         {
-            //Daten laden
-            wSavedDate = Properties.Settings.Default.wDateSaverSetting;
-            zSavedDate = Properties.Settings.Default.zDateSaverSetting;
-            pSavedDate = Properties.Settings.Default.pDateSaverSetting;
+            if (today == DateTime.Today.Date) return;
+            today = DateTime.Today.Date;
+            wDaysGone();
+            zDaysGone();
+            pDaysGone();
+            Warning();
         }
-
-
-
+        
         public void wDaysGone()
         {
-           
             //Heute minus gespeichertes Datum = Anzahl vergangener Tage
             //Und die Ausgabe
 
-            wDaysPassed = (thisDay - wSavedDate).Days;
-
-
+            wDaysPassed = (today - Properties.Settings.Default.wDateSaverSetting).Days;
+            
             if (wDaysPassed == 0)
             {
                 wDaysGoneField.Content = "Weniger als 24 Stunden";
@@ -138,17 +85,13 @@ namespace Time_V_5
             }
         }
 
-
-
         public void zDaysGone()
         {
-            
             //Heute minus gespeichertes Datum = Anzahl vergangener Tage
             //Und die Ausgabe
 
-            zDaysPassed = (thisDay - zSavedDate).Days;
-
-
+            zDaysPassed = (today - Properties.Settings.Default.zDateSaverSetting).Days;
+            
             if (zDaysPassed == 0)
             {
                 zDaysGoneField.Content = "Weniger als 24 Stunden";
@@ -170,18 +113,14 @@ namespace Time_V_5
                 zBar.Value = 0;
             }
         }
-
-
-
+        
         public void pDaysGone()
         {
-            
             //Heute minus gespeichertes Datum = Anzahl vergangener Tage
             //Und die Ausgabe
 
-            pDaysPassed = (thisDay - pSavedDate).Days;
-
-
+            pDaysPassed = (today - Properties.Settings.Default.pDateSaverSetting).Days;
+            
             if (pDaysPassed == 0)
             {
                 pDaysGoneField.Content = "Weniger als 24 Stunden";
@@ -203,7 +142,6 @@ namespace Time_V_5
                 pBar.Value = 0;
             }
         }
-
 
         public void Warning()
         {
@@ -238,45 +176,54 @@ namespace Time_V_5
                 deathimg.Visibility = Visibility.Visible;
             }
         }
-
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        
+        private void b_waterFilled_Click(object sender, RoutedEventArgs e)
         {
             wBar.Value = 100;
             wDaysGoneField.Content = "Weniger als 24 Stunden";
 
-            Properties.Settings.Default.wDateSaverSetting = thisDay;
+            //Update Setting
+            Properties.Settings.Default.wDateSaverSetting = DateTime.Today.Date;
             Properties.Settings.Default.Save();
+
+            //And Update work VAR
+            wDaysPassed = 0;
 
             //Check Warnings
             Warning();
-
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void b_sugarFilled_Click(object sender, RoutedEventArgs e)
         {
             zBar.Value = 100;
             zDaysGoneField.Content = "Weniger als 24 Stunden";
 
-            Properties.Settings.Default.zDateSaverSetting = thisDay;
+            //Update Setting
+            Properties.Settings.Default.zDateSaverSetting = DateTime.Today.Date;
             Properties.Settings.Default.Save();
+
+            //And Update work VAR
+            zDaysPassed = 0;
 
             //Check Warnings
             Warning();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void b_proteinFilled_Click(object sender, RoutedEventArgs e)
         {
             pBar.Value = 100;
             pDaysGoneField.Content = "Weniger als 24 Stunden";
 
-            Properties.Settings.Default.pDateSaverSetting = thisDay;
+            //Update Settings
+            Properties.Settings.Default.pDateSaverSetting = DateTime.Today.Date;
             Properties.Settings.Default.Save();
 
+            //And Update work VAR
+            pDaysPassed = 0;
+            
             //Check Warnings
             Warning();
-        }
+        }       
     }
 
 }
