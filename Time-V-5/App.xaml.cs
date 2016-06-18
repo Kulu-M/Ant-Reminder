@@ -13,5 +13,10 @@ namespace Time_V_5
     /// </summary>
     public partial class App : Application
     {
+        public static void closeApplicationMethod()
+        {
+            Console.WriteLine("Shutting down by users demand!");
+            Application.Current.Shutdown();
+        }
     }
 }
