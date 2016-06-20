@@ -117,12 +117,16 @@
     <None Include="Res\2940-ants.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Res\ant-ico.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Resource Include="Res\ant-ico.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="2940-ants.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Add.png" />
+    <Resource Include="Res\Close.png" />
+    <Resource Include="Res\Error.ico" />
+    <Resource Include="Res\Remove.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
