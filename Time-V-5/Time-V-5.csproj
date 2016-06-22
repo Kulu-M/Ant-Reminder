@@ -108,10 +108,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\warn.png" />
+    <Content Include="Res\warn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Res\death.png" />
+    <Content Include="Res\death.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="Res\2940-ants.jpg" />
@@ -127,6 +131,21 @@
     <Resource Include="Res\Close.png" />
     <Resource Include="Res\Error.ico" />
     <Resource Include="Res\Remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\ant-3-16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ant.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Res\ant.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\death.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

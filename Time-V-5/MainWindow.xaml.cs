@@ -37,8 +37,10 @@ namespace Time_V_5
         {
             today = DateTime.Today.Date;
 
+            //timer.Interval = TimeSpan.FromSeconds(1); //Debug
             timer.Interval = TimeSpan.FromMinutes(50);
             timer.Tick += timerTick;
+            timer.Start();
 
             wDaysGone();
             zDaysGone();
@@ -53,9 +55,19 @@ namespace Time_V_5
             wDaysGone();
             zDaysGone();
             pDaysGone();
+
+            //debugValues();    //Debug
+            
             Warning();
         }
-        
+
+        private void debugValues()
+        {
+            wDaysPassed = 5;
+            zDaysPassed = 5;
+            pDaysPassed = 5;
+        }
+
         public void wDaysGone()
         {
             //Heute minus gespeichertes Datum = Anzahl vergangener Tage
@@ -145,32 +157,33 @@ namespace Time_V_5
 
         public void Warning()
         {
+            if (wDaysPassed == 0 || zDaysPassed == 0 || pDaysPassed == 0)
+            {
+                warnimg.Opacity = 0;
+                deathimg.Opacity = 0;
+            }
             //Warnungs IMGs langsam einblenden
             if (wDaysPassed == 1 || zDaysPassed == 1 || pDaysPassed == 1)
             {
                 warnimg.Opacity = 0.1;
                 deathimg.Opacity = 0.1;
             }
-
-            else if (wDaysPassed == 2 || zDaysPassed == 2 || pDaysPassed == 2)
+            if (wDaysPassed == 2 || zDaysPassed == 2 || pDaysPassed == 2)
             {
                 warnimg.Opacity = 0.2;
                 deathimg.Opacity = 0.2;
             }
-
-            else if (wDaysPassed == 3 || zDaysPassed == 3 || pDaysPassed == 3)
+            if (wDaysPassed == 3 || zDaysPassed == 3 || pDaysPassed == 3)
             {
                 warnimg.Opacity = 0.3;
                 deathimg.Opacity = 0.3;
             }
-
             //Warnungs IMGs anzeigen
             if (wDaysPassed > 3 && wDaysPassed <= 6 || zDaysPassed > 3 && zDaysPassed <= 6 || pDaysPassed > 3 && pDaysPassed <= 6)
             {
                 warnimg.Visibility = Visibility.Visible;
             }
-
-            else if (wDaysPassed > 6 || zDaysPassed > 6 || pDaysPassed > 6)
+            if (wDaysPassed > 6 || zDaysPassed > 6 || pDaysPassed > 6)
             {
                 warnimg.Visibility = Visibility.Visible;
                 deathimg.Visibility = Visibility.Visible;
